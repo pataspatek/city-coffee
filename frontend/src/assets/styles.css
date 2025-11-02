@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+:root {
+    --header-height: 150px;
+    --logo-height: 70px;
+
+    --nav-link-underline-width: 80%;
+    --nav-link-underline-height: 5px;
+
+    --element-border-radius: 20px;
+
+    --user-card-height: 100px;
+
+    --header-font-size: 30px;
+    --text-font-size: 20px;
+
+    --base-color: #CDD4D9;
+    --primary-color: #100800;
+    --secondary-color-light: rgb(181, 123, 40);
+    --secondary-color-dark: rgb(90, 57, 25);
+    --text-color: white;
+  }
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: var(--text-font-size);
+}
+
+body {
+  background-color: var(--base-color);
+}
+
+/* NavBar.css */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-width: 1000px;
+  height: var(--header-height);
+  background: var(--primary-color);
+  padding: 0 100px;
+}
+
+.logo {
+  height: var(--logo-height);
+}
+
+.nav-item {
+  display: inline-flex;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: var(--header-font-size);
+  color: var(--text-color);
+  transition: all 0.3s ease 0s;
+  height: var(--header-height);
+  width: 200px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-link::before,
+.active::before {
+  background-image: -moz-linear-gradient(left, var(--secondary-color-dark), var(--secondary-color-light));
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: calc(var(--nav-link-underline-width) / 2);
+  transform: translateX(calc(var(--nav-link-underline-width) / 2 *-1));
+  height: var(--nav-link-underline-height);
+  width: 0;
+  transition: all 0.25s ease 0s;
+}
+
+.nav-link:hover::before {
+  width: var(--nav-link-underline-width);
+}
+
+.active::before {
+  width: var(--nav-link-underline-width);
+}
+
+/* SearchBar.css */
+.search-bar-container {
+  position: fixed;
+  top: var(--header-height);
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--base-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-line {
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  top: calc(var(--header-height) * 2);
+  background: linear-gradient(to top, rgba(205, 212, 217, 0.1), rgba(205, 212, 217, 1));
+}
+
+.search-bar-input {
+  width: 60%;
+  height: 70px;
+  margin-left: 10px;
+  border: 3px solid var(--secondary-color-dark);
+  border-radius: var(--element-border-radius);
+  padding-left: 20px;
+}
+
+.search-bar-input:hover {
+  border-color: var(--secondary-color-light);
+}
+
+.search-bar-input:focus {
+  border-color: var(--secondary-color-light);
+  outline: none;
+}
+
+.search-bar-input:focus::placeholder {
+  color: transparent;
+}
+
+
+/* UserList.css */
+.user-list-container {
+  margin-top: calc(var(--header-height) * 3);
+}
+
+.user-list-link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+}
+
+.user-card {
+  background-color: var(--primary-color);
+  margin: 20px 50px;
+  border-radius: var(--element-border-radius);
+  height: var(--user-card-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card:hover {
+  background: -moz-linear-gradient(top, var(--secondary-color-dark), var(--secondary-color-light));
+}
+
+.no-user-found-message {
+  text-align: center;
+}
+
+
+/* AddUserForm.jsx */
+.user-form-container {
+  color: var(--text-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.user-form-fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.user-form {
+  margin: 0 50px;
+  background-color: var(--primary-color);
+  padding: 50px;
+  border-radius: var(--element-border-radius);
+}
+
+.form-group {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-user-input {
+  flex: 1;
+  height: 70px;
+  margin-left: 10px;
+  border: 3px solid var(--secondary-color-dark);
+  border-radius: var(--element-border-radius);
+  padding-left: 20px;
+  outline: none;
+}
+
+.add-user-input:hover,
+.search-bar-input:focus {
+  border-color: var(--secondary-color-light);
+}
+
+.add-user-button {
+  margin-top: 20px;
+  background: linear-gradient(to left, var(--secondary-color-dark), var(--secondary-color-light));
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--element-border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-position 0.3s ease;
+  background-size: 200% auto;
+  background-position: 100% 0;
+}
+
+.add-user-button:hover {
+  background-position: 0 0;
+}
+
+/* Set the margin top for all of the views */
+.content-wrapper {
+  margin-top: calc(var(--header-height) * 1.3);
+}
+
+/* User info */
+.user-info-container {
+  background: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px;
+  margin: calc(var(--header-height) * 1.2) 50px 20px 50px;
+  border-radius: var(--element-border-radius);
+}
+
+.user-info-container h1 {
+  margin-bottom: 10px;
+}
+
+.info-item {
+  margin-bottom: 10px;
+}
+
+.info-item span {
+  margin-left: 10px;
+}
+
+/* CoffeeStamps */
+.stamps-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-item {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 3px solid green;
+  width: 100px;
+  height: 100px;
+  border-radius: var(--element-border-radius);
+  cursor: pointer;
+  color: var(--text-color);
+  background: linear-gradient(to top, var(--secondary-color-dark), var(--secondary-color-light));
+}
+
+.unclicked {
+  opacity: 0.5;
+}
+
+.button-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border: none;
+}
